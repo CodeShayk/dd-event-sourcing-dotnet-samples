@@ -1,0 +1,32 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9EA39149-7870-4C27-A7CD-DC130BF09635}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5C75626C-2652-4AF3-B133-E12D4EDDB5FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankAccount.Domain", "src\BankAccount.Domain\BankAccount.Domain.csproj", "{9B1729DB-4FBB-4A56-96DE-3290BBE5017B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankAccount.Domain.Tests", "tests\BankAccount.Domain.Tests\BankAccount.Domain.Tests.csproj", "{AD39EDD9-8D14-4316-B6B8-A0955CDBD7FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B1729DB-4FBB-4A56-96DE-3290BBE5017B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B1729DB-4FBB-4A56-96DE-3290BBE5017B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B1729DB-4FBB-4A56-96DE-3290BBE5017B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B1729DB-4FBB-4A56-96DE-3290BBE5017B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD39EDD9-8D14-4316-B6B8-A0955CDBD7FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD39EDD9-8D14-4316-B6B8-A0955CDBD7FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD39EDD9-8D14-4316-B6B8-A0955CDBD7FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD39EDD9-8D14-4316-B6B8-A0955CDBD7FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9B1729DB-4FBB-4A56-96DE-3290BBE5017B} = {9EA39149-7870-4C27-A7CD-DC130BF09635}
+		{AD39EDD9-8D14-4316-B6B8-A0955CDBD7FE} = {5C75626C-2652-4AF3-B133-E12D4EDDB5FE}
+	EndGlobalSection
+EndGlobal

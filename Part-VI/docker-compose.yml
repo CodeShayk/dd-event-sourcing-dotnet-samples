@@ -1,0 +1,54 @@
+# Chapter 29 — Docker Compose for the bank account example
+version: "3.9"
+
+services:
+  bankaccount-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: bankaccount-api:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__BankAccount=Host=postgres;Database=bankaccount;Username=postgres;Password=postgres
+      - OTEL_EXPORTER_JAEGER_AGENT_HOST=jaeger
+      - OTEL_EXPORTER_JAEGER_AGENT_PORT=6831
+    depends_on:
+      postgres:
+        condition: service_healthy
+      jaeger:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  postgres:
+    image: postgres:16
+    environment:
+      - POSTGRES_DB=bankaccount
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d bankaccount"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.52
+    ports:
+      - "6831:6831/udp"
+      - "16686:16686"
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+
+volumes:
+  postgres-data:

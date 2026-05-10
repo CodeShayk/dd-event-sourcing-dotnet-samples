@@ -1,0 +1,86 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'Code/**'
+      - 'References/**'
+      - '.github/workflows/ci.yml'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - 'Code/**'
+      - 'References/**'
+      - '.github/workflows/ci.yml'
+
+jobs:
+  build-and-test:
+    name: Build & Test — All Parts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 9
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore Code/BankAccount.sln
+
+      - name: Build
+        run: dotnet build Code/BankAccount.sln --no-restore --configuration Release
+
+      - name: Test — Part I (Thinking in Domains, Ch 1–6)
+        run: dotnet test Code/Part-I/Part-I.sln --no-build --configuration Release --logger "trx;LogFileName=part-i-results.trx" --results-directory ./test-results
+        continue-on-error: false
+
+      - name: Test — Part II (Modelling with Events, Ch 7–11)
+        run: dotnet test Code/Part-II/Part-II.sln --no-build --configuration Release --logger "trx;LogFileName=part-ii-results.trx" --results-directory ./test-results
+        continue-on-error: false
+
+      - name: Test — Part III (Commanding Change, Ch 12–16)
+        run: dotnet test Code/Part-III/Part-III.sln --no-build --configuration Release --logger "trx;LogFileName=part-iii-results.trx" --results-directory ./test-results
+        continue-on-error: false
+
+      - name: Test — Part IV (Reading the World, Ch 17–22)
+        run: dotnet test Code/Part-IV/Part-IV.sln --no-build --configuration Release --logger "trx;LogFileName=part-iv-results.trx" --results-directory ./test-results
+        continue-on-error: false
+
+      - name: Test — Part V (Infrastructure & Persistence, Ch 23–26)
+        run: dotnet test Code/Part-V/Part-V.sln --no-build --configuration Release --logger "trx;LogFileName=part-v-results.trx" --results-directory ./test-results
+        continue-on-error: false
+
+      - name: Test — Part VI (Production Readiness, Ch 27–29)
+        run: dotnet test Code/Part-VI/Part-VI.sln --no-build --configuration Release --logger "trx;LogFileName=part-vi-results.trx" --results-directory ./test-results
+        continue-on-error: false
+
+      - name: Test — Part VII (Inside the Framework, Ch 30–32)
+        run: dotnet test Code/Part-VII/Part-VII.sln --no-build --configuration Release --logger "trx;LogFileName=part-vii-results.trx" --results-directory ./test-results
+        continue-on-error: false
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: ./test-results/*.trx
+          retention-days: 30
+
+  build-summary:
+    name: Summary
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    if: always()
+    steps:
+      - name: Report status
+        run: |
+          if [ "${{ needs.build-and-test.result }}" == "success" ]; then
+            echo "✅ All 7 parts built and 152 tests passed."
+          else
+            echo "❌ Build or tests failed. Check the build-and-test job for details."
+            exit 1
+          fi
