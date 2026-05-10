@@ -5,7 +5,9 @@
 </a>
 
 **From Problems to Patterns — Domain-Driven Design and Event Sourcing in .NET**
-*By Najaf Shaikh · First Edition, 2026*
+*By Najaf A. Shaikh · First Edition, 2026*
+
+[![build-samples](https://github.com/CodeShayk/dd-event-sourcing-dotnet-samples/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/CodeShayk/dd-event-sourcing-dotnet-samples/actions/workflows/ci.yml)
 
 ---
 
