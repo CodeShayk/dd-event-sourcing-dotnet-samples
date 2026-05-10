@@ -1,5 +1,9 @@
 # Companion Code Repository
 
+<a href="https://www.amazon.com/Problems-Patterns-Domain-Driven-Sourcing-Understanding-ebook/dp/B0GX32V9F1/">
+  <img src="images/e-book-front.png" alt="From Problems to Patterns: Domain-Driven Design and Event Sourcing in .NET" width="250" align="right" />
+</a>
+
 **From Problems to Patterns — Domain-Driven Design and Event Sourcing in .NET**
 *By Najaf Shaikh · First Edition, 2026*
 
@@ -91,7 +95,7 @@ dotnet test Part-III/Part-III.sln
 - [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9)
 - Visual Studio 2022 v17.8+ **or** JetBrains Rider **or** VS Code with C# Dev Kit
 
-Parts III–VII reference **SourceFlow.Net** via a local project reference to `../References/SourceFlow.Net`. No NuGet restore is needed for the framework — it is included in this repository.
+Parts III–VII reference **SourceFlow.Net** via a local project reference to `References/SourceFlow.Net`. No NuGet restore is needed for the framework — it is included in this repository.
 
 Parts VI and VII include `Dockerfile` and `docker-compose.yml`. Docker Desktop is required only if you intend to run the containerised deployment examples from Chapters 29–32.
 
@@ -115,11 +119,7 @@ Code/
 
 ## SourceFlow.Net
 
-The framework used throughout Parts III–VII is [SourceFlow.Net v1.0.0](https://github.com/CodeShayk/SourceFlow.Net), included as a local project reference under `../References/SourceFlow.Net`. This means:
-
-- No internet connection is required to build
-- You can step through framework source code while debugging
-- The framework version is pinned to exactly what the book describes
+The framework used throughout Parts III–VII is [SourceFlow.Net v1.0.0](https://github.com/CodeShayk/SourceFlow.Net), included as a NuGet package reference.
 
 See **Appendix A** of the book for the full SourceFlow.Net API reference, and **Appendix D** for dev environment setup instructions.
 

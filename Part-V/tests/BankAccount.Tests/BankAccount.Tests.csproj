@@ -20,7 +20,9 @@
     <ProjectReference Include="..\..\src\BankAccount.Domain\BankAccount.Domain.csproj" />
     <ProjectReference Include="..\..\src\BankAccount.Api\BankAccount.Api.csproj" />
     <ProjectReference Include="..\..\src\BankAccount.Infrastructure\BankAccount.Infrastructure.csproj" />
-    <ProjectReference Include="..\..\..\..\References\SourceFlow.Net\src\SourceFlow\SourceFlow.csproj" />
+    <PackageReference Include="SourceFlow.Net" Version="1.0.0" />
   </ItemGroup>
 
 </Project>
+
+

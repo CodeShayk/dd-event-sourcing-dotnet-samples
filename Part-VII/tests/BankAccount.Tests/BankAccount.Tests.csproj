@@ -26,7 +26,9 @@
     <ProjectReference Include="..\..\src\BankAccount.Infrastructure.Audit\BankAccount.Infrastructure.Audit.csproj" />
     <ProjectReference Include="..\..\src\BankAccount.Infrastructure.MongoDb\BankAccount.Infrastructure.MongoDb.csproj" />
     <ProjectReference Include="..\..\src\BankAccount.Infrastructure.Aws\BankAccount.Infrastructure.Aws.csproj" />
-    <ProjectReference Include="..\..\..\..\References\SourceFlow.Net\src\SourceFlow\SourceFlow.csproj" />
+    <PackageReference Include="SourceFlow.Net" Version="1.0.0" />
   </ItemGroup>
 
 </Project>
+
+

@@ -15,7 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\References\SourceFlow.Net\src\SourceFlow\SourceFlow.csproj" />
+    <PackageReference Include="SourceFlow.Net" Version="1.0.0" />
   </ItemGroup>
 
 </Project>
+
+
